@@ -1,0 +1,38 @@
+public class HelloWorld {
+    //实现选择排序
+    public static void main(String[] args) {
+        int[] arr = {12,3,4,56,76,32,31,54};
+        printArr(arr);
+        bubbleSort(arr);
+        printArr(arr);
+    }
+    public static void printArr(int[] arr){ //打印数组
+        for (int i = 0; i <arr.length ; i++) {
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println("\n");
+    }
+    public static void swap(int[] arr,int i,int j){ //交换元素
+        int tmp = 0;
+        tmp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = tmp;
+    }
+    public static void bubbleSort(int[] arr) {
+        int i = 1;
+        //判断数组的为空或者数组只有1个元素，则直接返回，不用排序
+        if (arr.length <= 1 || arr == null) {
+            return;
+        }
+        //遍历数组，比较元素
+        //从数组（0~N）中寻找最小值，放在0的位置上
+        //从数组（1~N）中寻找最小值，放在1的位置上...
+        for (int j = 0; j < arr.length; j++) { //控制内层循环次数，且j的值是内层循环每次遍历的起点
+            int minValueIndex = j; //定义j=0的时候最小值的下标
+            for (i = j+1; i < arr.length; i++) { //从j后的第一个数开始遍历
+                minValueIndex = arr[i] < arr[minValueIndex] ?i:minValueIndex; //找出j后的每个数的最小值，并赋值给minValueIndex
+            }
+            swap(arr,j,minValueIndex); //将每次找到的j后的最小值的下标和j的值交换，j的值是内层i的for循环的起点
+        }
+    }
+}
