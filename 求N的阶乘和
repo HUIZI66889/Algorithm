@@ -1,0 +1,18 @@
+public class HelloWorld {
+    public static void main(String[] args) {
+        //给定一个参数N，返回1!+2!+3!+4!+…+N!的结果
+        int N = 10;
+        int a = factorial(N);
+        System.out.println(a);
+    }
+
+    public static int factorial(int N){
+        int mul = 1;
+        int sum =0;
+        for (int i = 1; i <= N; i++) {
+            mul = i * mul;//实现后一个数的阶乘是上一个数的阶乘*后一个数本身
+            sum = sum + mul;//将每个数的和的阶乘乘后的结果加起来
+        }
+        return sum;
+    }
+}
